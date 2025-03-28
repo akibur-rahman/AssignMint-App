@@ -4,56 +4,53 @@ import 'package:assignmint/widgets/assignment_card.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({super.key});
+  HomePage({Key? key}) : super(key: key);
 
-  final List<AssignmentPreview> AssignmentPreviews = [
+  final List<AssignmentPreview> assignmentPreviews = [
     AssignmentPreview(
       id: 1,
       title: 'Mathematics Quiz - Calculus',
-      subject: 'Mathematics',
       date: '2024-02-15',
-      imageUrl:
-          'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop&q=60',
     ),
     AssignmentPreview(
       id: 2,
       title: 'English Literature Essay',
-      subject: 'English',
       date: '2024-02-14',
-      imageUrl:
-          'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=800&auto=format&fit=crop&q=60',
     ),
-    AssignmentPreview(
-      id: 3,
-      title: 'Physics Problem Set',
-      subject: 'Physics',
-      date: '2024-02-13',
-      imageUrl:
-          'https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?w=800&auto=format&fit=crop&q=60',
-    ),
+    AssignmentPreview(id: 3, title: 'Physics Problem Set', date: '2024-02-13'),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xffdcfce7),
+        backgroundColor: const Color(0xffdcfce7),
         title: Text("My Assignments", style: AppTheme.HeadingTextStyle),
       ),
       body:
-          AssignmentPreviews.isEmpty
+          assignmentPreviews.isEmpty
               ? Center(
                 child: Text(
                   "No Assignments yet!",
                   style: AppTheme.HeadingTextStyle,
                 ),
               )
-              : ListView.builder(
-                padding: EdgeInsets.all(16),
-                itemCount: AssignmentPreviews.length,
-                itemBuilder: (context, index) {
-                  return AssignmentCard(assignment: AssignmentPreviews[index]);
-                },
+              : Padding(
+                padding: const EdgeInsets.all(10),
+                child: GridView.builder(
+                  itemCount: assignmentPreviews.length,
+                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 250,
+                    mainAxisExtent: 180,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                  ),
+                  itemBuilder: (context, index) {
+                    return AssignmentCard(
+                      assignment: assignmentPreviews[index],
+                    );
+                  },
+                ),
               ),
     );
   }

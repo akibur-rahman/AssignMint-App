@@ -4,65 +4,85 @@ import 'package:flutter/material.dart';
 class AssignmentCard extends StatelessWidget {
   final AssignmentPreview assignment;
 
-  const AssignmentCard({required this.assignment, super.key});
+  const AssignmentCard({required this.assignment, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.only(bottom: 16),
-      elevation: 2,
+      elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          // Image
-          ClipRRect(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-            child: Image.network(
-              assignment.imageUrl,
-              height: 160,
-              fit: BoxFit.cover,
-            ),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          gradient: const LinearGradient(
+            colors: [
+              Color.fromARGB(255, 160, 238, 161), // Very light green
+              Color.fromARGB(255, 129, 236, 133), // Slightly deeper light green
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
-
-          // Content
-          Padding(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  assignment.title,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF166534),
-                  ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                assignment.title,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xff15803d),
                 ),
-                SizedBox(height: 8),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(height: 12),
 
-                // Details Row
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    _buildDetailItem(Icons.assignment, assignment.subject),
-                    _buildDetailItem(Icons.calendar_month, assignment.date),
-                  ],
+              // Divider
+              Container(
+                height: 2,
+                width: 40,
+                decoration: BoxDecoration(
+                  color: Color(0xff15803d),
+                  borderRadius: BorderRadius.circular(2),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(height: 12),
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildDetailItem(Icons.calendar_today, assignment.date),
+                    ],
+                  );
+                },
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
 
   Widget _buildDetailItem(IconData icon, String text) {
-    return Row(
+    return Wrap(
+      crossAxisAlignment: WrapCrossAlignment.center,
+      spacing: 6,
       children: [
-        Icon(icon, size: 16, color: Color(0xFF16A34A)),
-        SizedBox(width: 6),
-        Text(text, style: TextStyle(color: Color(0xFF4ADE80), fontSize: 14)),
+        Icon(icon, size: 16, color: Color(0xff15803d)),
+        Text(
+          text,
+          style: const TextStyle(
+            fontSize: 14,
+            color: Color(0xff15803d),
+            overflow: TextOverflow.ellipsis,
+          ),
+          maxLines: 1,
+        ),
       ],
     );
   }

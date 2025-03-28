@@ -51,6 +51,84 @@ class ProfilePage extends StatelessWidget {
               onPressed: () {},
             ),
           ),
+          SizedBox(height: 15),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Card(
+                color: Colors.white,
+                elevation: 0,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            '23',
+                            style: TextStyle(
+                              fontSize: 24,
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            'Assignments',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 43, 211, 105),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            '156',
+                            style: TextStyle(
+                              fontSize: 24,
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            'Questions',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 43, 211, 105),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            '89%',
+                            style: TextStyle(
+                              fontSize: 24,
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            'Accuracy',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 43, 211, 105),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

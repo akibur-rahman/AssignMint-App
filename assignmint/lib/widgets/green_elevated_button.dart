@@ -16,9 +16,7 @@ class GreenElevatedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        backgroundColor: WidgetStateProperty.all(
-          Color.fromARGB(255, 36, 187, 92),
-        ),
+        backgroundColor: WidgetStateProperty.all(Color(0xff15803d)),
         shape: WidgetStateProperty.all(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
