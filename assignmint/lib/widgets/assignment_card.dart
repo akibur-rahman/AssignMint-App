@@ -1,8 +1,8 @@
-import 'package:assignmint/models/assignment_model.dart';
+import 'package:assignmint/models/assignment_preview_model.dart';
 import 'package:flutter/material.dart';
 
 class AssignmentCard extends StatelessWidget {
-  final Assignment assignment;
+  final AssignmentPreview assignment;
 
   const AssignmentCard({required this.assignment, super.key});
 

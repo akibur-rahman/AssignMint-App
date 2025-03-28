@@ -1,4 +1,4 @@
-import 'package:assignmint/models/assignment_model.dart';
+import 'package:assignmint/models/assignment_preview_model.dart';
 import 'package:assignmint/widgets/assignment_card.dart';
 import 'package:assignmint/widgets/create_new_button.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  final List<Assignment> sampleAssignments = [
-    Assignment(
+  final List<AssignmentPreview> sampleAssignmentPreviews = [
+    AssignmentPreview(
       id: 1,
       title: 'Mathematics Quiz - Calculus',
       subject: 'Mathematics',
@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
       imageUrl:
           'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop&q=60',
     ),
-    Assignment(
+    AssignmentPreview(
       id: 2,
       title: 'English Literature Essay',
       subject: 'English',
@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
       imageUrl:
           'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=800&auto=format&fit=crop&q=60',
     ),
-    Assignment(
+    AssignmentPreview(
       id: 3,
       title: 'Physics Problem Set',
       subject: 'Physics',
@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "My Assignments",
+              "My AssignmentPreviews",
               style: TextStyle(
                 color: Color(0xff15803d),
                 fontWeight: FontWeight.bold,
@@ -55,10 +55,10 @@ class HomePage extends StatelessWidget {
       ),
       body: ListView.builder(
         padding: EdgeInsets.all(16),
-        itemCount: sampleAssignments.length,
+        itemCount: sampleAssignmentPreviews.length,
         itemBuilder: (context, index) {
-          final assignment = sampleAssignments[index];
-          return AssignmentCard(assignment: assignment);
+          final AssignmentPreview = sampleAssignmentPreviews[index];
+          return AssignmentCard(assignment: AssignmentPreview);
         },
       ),
     );
