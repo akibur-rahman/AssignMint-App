@@ -1,50 +1,39 @@
+import 'package:assignmint/controllers/main_scaffold_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:assignmint/pages/create_page.dart';
 import 'package:assignmint/pages/home_page.dart';
 import 'package:assignmint/pages/profile_page.dart';
-import 'package:flutter/material.dart';
 
-class MainScaffold extends StatefulWidget {
-  const MainScaffold({Key? key}) : super(key: key);
+class MainScaffold extends StatelessWidget {
+  MainScaffold({Key? key}) : super(key: key);
 
-  @override
-  _MainScaffoldState createState() => _MainScaffoldState();
-}
+  final MainScaffoldController controller = Get.put(MainScaffoldController());
 
-class _MainScaffoldState extends State<MainScaffold> {
-  int _selectedIndex = 0;
-
-  static final List<Widget> _pages = <Widget>[
-    HomePage(),
-    CreatePage(),
-    ProfilePage(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  final List<Widget> _pages = [HomePage(), CreatePage(), ProfilePage()];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(child: _pages.elementAt(_selectedIndex)),
-      bottomNavigationBar: BottomNavigationBar(
-        elevation: 0,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle_outline),
-            label: 'Create',
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Color(0xff15803d),
-        unselectedItemColor: Color.fromARGB(255, 70, 194, 113),
-        onTap: _onItemTapped,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Color(0xfff0fdf4),
+    return Obx(
+      () => Scaffold(
+        body: Center(child: _pages[controller.selectedIndex.value]),
+        bottomNavigationBar: BottomNavigationBar(
+          elevation: 0,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add_circle_outline),
+              label: 'Create',
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          ],
+          currentIndex: controller.selectedIndex.value,
+          selectedItemColor: Color(0xff15803d),
+          unselectedItemColor: Color.fromARGB(255, 70, 194, 113),
+          onTap: controller.changePage,
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Color(0xfff0fdf4),
+        ),
       ),
     );
   }
