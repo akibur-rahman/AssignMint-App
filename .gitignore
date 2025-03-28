@@ -1,0 +1,76 @@
+# Flutter/Dart/Pub related
+.dart_tool/
+.packages
+.pub-cache/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.melos_tool/
+
+# iOS-specific
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/App.framework
+ios/.symlinks/
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/DerivedData/
+ios/.dart_tool/
+
+# Android-specific
+android/.gradle/
+android/.idea/
+android/local.properties
+android/**/build/
+android/**/captures/
+
+# VS Code
+.vscode/
+
+# IntelliJ / Android Studio
+*.iml
+.idea/
+
+# macOS-specific
+macos/Flutter/GeneratedPluginRegistrant.swift
+macos/Pods/
+macos/Runner.xcworkspace/
+macos/.dart_tool/
+macos/Flutter/ephemeral/
+macos/build/
+
+# Windows-specific
+windows/Flutter/ephemeral/
+windows/.dart_tool/
+windows/build/
+
+# Web-specific
+web/.dart_tool/
+web/build/
+
+# Linux-specific
+linux/.dart_tool/
+linux/build/
+
+# Others
+*.log
+*.tmp
+*.DS_Store
+*.lock
+*.bak
+
+# Firebase related (keep your service files private!)
+**/google-services.json
+**/GoogleService-Info.plist
+
+# Environment files
+.env
+.env.*
+
+# Coverage files
+coverage/
+*.lcov
+
+# Generated files
+*.g.dart
