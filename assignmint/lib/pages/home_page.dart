@@ -42,12 +42,17 @@ class HomePage extends StatelessWidget {
                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 250,
                     mainAxisExtent: 180,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 6,
+                    mainAxisSpacing: 6,
                   ),
                   itemBuilder: (context, index) {
                     return AssignmentCard(
                       assignment: assignmentPreviews[index],
+                      onTap: (id) {
+                        // Function that receives the id and does something with it
+                        print('Assignment tapped with ID: $id');
+                        // Add your navigation or other actions here
+                      },
                     );
                   },
                 ),

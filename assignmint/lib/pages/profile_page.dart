@@ -1,6 +1,7 @@
 import 'package:assignmint/utils/theme/theme.dart';
 import 'package:assignmint/widgets/green_elevated_button.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -16,10 +17,17 @@ class ProfilePage extends StatelessWidget {
           Center(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(90),
-              child: Image.network(
+              child: CachedNetworkImage(
+                imageUrl:
+                    'https://marketplace.canva.com/EAFHfL_zPBk/1/0/1600w/canva-yellow-inspiration-modern-instagram-profile-picture-kpZhUIzCx_w.jpg',
                 height: 180,
                 width: 180,
-                'https://ntrepidcorp.com/wp-content/uploads/2016/06/team-1.jpg',
+                fit: BoxFit.cover,
+                placeholder:
+                    (context, url) => CircularProgressIndicator(
+                      color: Color.fromARGB(255, 97, 228, 143),
+                    ),
+                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ),
           ),

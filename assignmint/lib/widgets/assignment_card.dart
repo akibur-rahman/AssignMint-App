@@ -3,65 +3,73 @@ import 'package:flutter/material.dart';
 
 class AssignmentCard extends StatelessWidget {
   final AssignmentPreview assignment;
+  final Function(String) onTap; // Changed to accept String (ID) only
 
-  const AssignmentCard({required this.assignment, Key? key}) : super(key: key);
+  const AssignmentCard({
+    required this.assignment,
+    required this.onTap, // Takes a function that receives a String
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          gradient: const LinearGradient(
-            colors: [
-              Color.fromARGB(255, 160, 238, 161), // Very light green
-              Color.fromARGB(255, 129, 236, 133), // Slightly deeper light green
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+    return GestureDetector(
+      onTap: () => onTap(assignment.id),
+      child: Card(
+        elevation: 4,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            gradient: const LinearGradient(
+              colors: [
+                Color.fromARGB(255, 171, 233, 172), // Very light green
+                Color.fromARGB(255, 87, 223, 92), // Slightly deeper light green
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
           ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                assignment.title,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xff15803d),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  assignment.title,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xff15803d),
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-              const SizedBox(height: 12),
+                const SizedBox(height: 12),
 
-              // Divider
-              Container(
-                height: 2,
-                width: 40,
-                decoration: BoxDecoration(
-                  color: Color(0xff15803d),
-                  borderRadius: BorderRadius.circular(2),
+                // Divider
+                Container(
+                  height: 2,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    color: Color(0xff15803d),
+                    borderRadius: BorderRadius.circular(2),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 12),
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildDetailItem(Icons.calendar_today, assignment.date),
-                    ],
-                  );
-                },
-              ),
-            ],
+                const SizedBox(height: 12),
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildDetailItem(Icons.calendar_today, assignment.date),
+                      ],
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

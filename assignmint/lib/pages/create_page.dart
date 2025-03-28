@@ -1,5 +1,7 @@
 import 'package:assignmint/utils/theme/theme.dart';
+import 'package:assignmint/widgets/green_elevated_button.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class CreatePage extends StatelessWidget {
   @override
@@ -9,7 +11,26 @@ class CreatePage extends StatelessWidget {
         title: Text('Create Assignment', style: AppTheme.HeadingTextStyle),
         backgroundColor: Color(0xffdcfce7),
       ),
-      body: Center(child: Text('Create Assignment Page')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Lottie Animation
+            Lottie.asset(
+              'assets/lottie/lavitating.json',
+              width: 300,
+              height: 300,
+              fit: BoxFit.fill,
+            ),
+            SizedBox(height: 40), // Add some space between animation and button
+            // Green Elevated Button
+            GreenElevatedButton(
+              buttontext: "Create Assignment",
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
