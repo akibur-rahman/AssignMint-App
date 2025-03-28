@@ -1,12 +1,11 @@
 import 'package:assignmint/models/assignment_preview_model.dart';
 import 'package:assignmint/widgets/assignment_card.dart';
-import 'package:assignmint/widgets/create_new_button.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  final List<AssignmentPreview> sampleAssignmentPreviews = [
+  final List<AssignmentPreview> AssignmentPreviews = [
     AssignmentPreview(
       id: 1,
       title: 'Mathematics Quiz - Calculus',
@@ -39,28 +38,32 @@ class HomePage extends StatelessWidget {
       backgroundColor: Color(0xfff0fdf4),
       appBar: AppBar(
         backgroundColor: Color(0xffdcfce7),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              "My AssignmentPreviews",
-              style: TextStyle(
-                color: Color(0xff15803d),
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            CreateNewButton(onPressed: () {}),
-          ],
+        title: Text(
+          "My Assignments",
+          style: TextStyle(
+            color: Color(0xff15803d),
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
-      body: ListView.builder(
-        padding: EdgeInsets.all(16),
-        itemCount: sampleAssignmentPreviews.length,
-        itemBuilder: (context, index) {
-          final AssignmentPreview = sampleAssignmentPreviews[index];
-          return AssignmentCard(assignment: AssignmentPreview);
-        },
-      ),
+      body:
+          AssignmentPreviews.isEmpty
+              ? Center(
+                child: Text(
+                  "No Assignments yet!",
+                  style: TextStyle(
+                    color: Color(0xff15803d),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              )
+              : ListView.builder(
+                padding: EdgeInsets.all(16),
+                itemCount: AssignmentPreviews.length,
+                itemBuilder: (context, index) {
+                  return AssignmentCard(assignment: AssignmentPreviews[index]);
+                },
+              ),
     );
   }
 }
