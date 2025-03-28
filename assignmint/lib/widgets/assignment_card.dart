@@ -45,7 +45,7 @@ class AssignmentCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _buildDetailItem(Icons.tag, assignment.subject),
+                    _buildDetailItem(Icons.assignment, assignment.subject),
                     _buildDetailItem(Icons.calendar_month, assignment.date),
                   ],
                 ),

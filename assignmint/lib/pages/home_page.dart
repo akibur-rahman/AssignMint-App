@@ -1,4 +1,5 @@
 import 'package:assignmint/models/assignment_preview_model.dart';
+import 'package:assignmint/utils/theme/theme.dart';
 import 'package:assignmint/widgets/assignment_card.dart';
 import 'package:flutter/material.dart';
 
@@ -35,26 +36,16 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff0fdf4),
       appBar: AppBar(
         backgroundColor: Color(0xffdcfce7),
-        title: Text(
-          "My Assignments",
-          style: TextStyle(
-            color: Color(0xff15803d),
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        title: Text("My Assignments", style: AppTheme.HeadingTextStyle),
       ),
       body:
           AssignmentPreviews.isEmpty
               ? Center(
                 child: Text(
                   "No Assignments yet!",
-                  style: TextStyle(
-                    color: Color(0xff15803d),
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: AppTheme.HeadingTextStyle,
                 ),
               )
               : ListView.builder(
